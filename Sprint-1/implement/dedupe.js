@@ -7,3 +7,4 @@ function dedupe(list) {
     }
     return listWithoutDuplicates;
 }
+module.exports = dedupe;
