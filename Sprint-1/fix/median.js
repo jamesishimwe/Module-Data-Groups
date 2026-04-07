@@ -7,6 +7,9 @@
 
 function calculateMedian(list) {
   if (!Array.isArray(list)) return null;
+  
+  const numbers = list.filter(val => typeof val === 'number');
+  if (numbers.length === 0) return null;
   const middleIndex = Math.floor(list.length / 2);
   const median = list.splice(middleIndex, 1)[0];
   return median;
