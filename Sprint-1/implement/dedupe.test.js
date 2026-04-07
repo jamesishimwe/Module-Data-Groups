@@ -31,5 +31,9 @@ describe("dedupe", () => {
         expect(dedupe([])).toEqual([]);
     });
     
-    
+    it("given an array with no duplicates, it returns a copy of the original array", () => {
+        expect(dedupe([1, 2, 3])).toEqual([1, 2, 3]);
+    });
+
+   
 });
