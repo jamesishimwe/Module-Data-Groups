@@ -17,8 +17,8 @@ function calculateMedian(list) {
     const mid2 = numbers[numbers.length / 2];
     return (mid1 + mid2) / 2;
   }
-  const middleIndex = Math.floor(list.length / 2);
-  const median = list.splice(middleIndex, 1)[0];
+  const middleIndex = Math.floor(numbers.length / 2);
+  const median = numbers[middleIndex];
   return median;
 }
 
