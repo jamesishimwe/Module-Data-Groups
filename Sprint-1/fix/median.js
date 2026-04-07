@@ -11,6 +11,12 @@ function calculateMedian(list) {
   const numbers = list.filter(val => typeof val === 'number');
   if (numbers.length === 0) return null;
   numbers.sort((a, b) => a - b);
+  
+  if (numbers.length % 2 === 0) {
+    const mid1 = numbers[numbers.length / 2 - 1];
+    const mid2 = numbers[numbers.length / 2];
+    return (mid1 + mid2) / 2;
+  }
   const middleIndex = Math.floor(list.length / 2);
   const median = list.splice(middleIndex, 1)[0];
   return median;
