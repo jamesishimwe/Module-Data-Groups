@@ -31,6 +31,35 @@ function addNewTodo() {
   }
 
   taskInput.value = "";
+  deadlineInput.value = "";
+}
+function createListItem(todo, index) {
+  const li = todoListItemTemplate.cloneNode(true);
+
+  // Requirement: Display deadline next to the todo text
+  const deadlineDisplay = todo.deadline ? ` (Due: ${todo.deadline})` : "";
+  li.querySelector(".description").textContent = todo.task + deadlineDisplay;
+
+  // Requirement: If completed, add strikethrough class and change icon to ✅
+  if (todo.completed) {
+    li.classList.add("completed");
+    const icon = li.querySelector(".complete-btn span");
+    icon.className = "fa-solid fa-square-check"; // Ticked checkbox
+  }
+
+  // Requirement: When checkbox icon is clicked, toggle completion
+  li.querySelector('.complete-btn').addEventListener("click", () => {
+    Todos.toggleCompletedOnTask(todos, index);
+    populateTodoList(); // Refresh the list to show strikethrough/tick
+  });
+    
+  // Requirement: When trash icon is clicked, delete the item
+  li.querySelector('.delete-btn').addEventListener("click", () => {
+    Todos.deleteTask(todos, index);
+    populateTodoList(); // Refresh the list to remove the item
+  });
+
+  return li;
 }
 
 // Note:
