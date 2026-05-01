@@ -38,4 +38,4 @@ test("Empty array of items",()=>{
 
 test("Invalid input",()=>{
     expect(() => tally("not an array")).toThrow(TypeError);
-});
+}); 
