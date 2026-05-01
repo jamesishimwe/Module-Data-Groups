@@ -43,3 +43,16 @@ test("decodes complex characters and emojis", () => {
     "price": "$10",
   });
 });
+test("ignores empty segments from double ampersands", () => {
+  expect(parseQueryString("a=1&&b=2")).toEqual({
+    "a": "1",
+    "b": "2",
+  });
+});
+
+test("ignores trailing ampersands", () => {
+  expect(parseQueryString("a=1&b=2&")).toEqual({
+    "a": "1",
+    "b": "2",
+  });
+});
