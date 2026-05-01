@@ -30,3 +30,16 @@ test("returns empty object for null or undefined", () => {
   expect(parseQueryString(null)).toEqual({});
   expect(parseQueryString(undefined)).toEqual({});
 });
+test("decodes URL encoded keys and values", () => {
+  expect(parseQueryString("search=coding%20tutorials&city=New%20York")).toEqual({
+    "search": "coding tutorials",
+    "city": "New York",
+  });
+});
+
+test("decodes complex characters and emojis", () => {
+  expect(parseQueryString("item=%F0%9F%8D%95&price=%2410")).toEqual({
+    "item": "🍕",
+    "price": "$10",
+  });
+});

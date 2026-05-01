@@ -1,6 +1,6 @@
 function parseQueryString(queryString) {
   const queryParams = {};
-  if (queryString.length === 0) {
+ if (!queryString) {
     return queryParams;
   }
   if (queryString.startsWith('?')) {
