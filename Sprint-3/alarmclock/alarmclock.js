@@ -25,6 +25,7 @@ function updateDisplay(secondsLeft) {
     }
   }, 1000);
 }
+window.setAlarm = setAlarm; 
 
 // DO NOT EDIT BELOW HERE
 
