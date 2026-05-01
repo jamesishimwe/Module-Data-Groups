@@ -500,3 +500,7 @@ function displayNewQuote() {
   quoteText.textContent = randomQuote.quote;
   authorText.textContent = `- ${randomQuote.author}`;
 }
+
+newQuoteBtn.addEventListener('click', displayNewQuote);
+
+displayNewQuote();
