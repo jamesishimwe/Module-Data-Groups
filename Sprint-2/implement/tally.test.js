@@ -37,5 +37,5 @@ test("Empty array of items",()=>{
 // Then it should throw an error
 
 test("Invalid input",()=>{
-    expect(tally("some string")).toThrow();
+    expect(() => tally("not an array")).toThrow(TypeError);
 });
