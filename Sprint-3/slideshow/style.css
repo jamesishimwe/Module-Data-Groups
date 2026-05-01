@@ -1,1 +1,21 @@
-/** Write your CSS in here **/
+#carousel-img {
+  /* This locks every "next" image to these exact dimensions */
+  width: 500px; 
+  height: 350px;
+  display: block;
+  margin: 0 auto;
+}
+
+.slideshow-frame {
+  width: 500px;
+  height: 350px;
+  margin: 0 auto;
+  border: 2px solid black;
+}
+
+.slideshow-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
