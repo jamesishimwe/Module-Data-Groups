@@ -1,18 +1,21 @@
 function parseQueryString(queryString) {
   const queryParams = {};
- if (!queryString) {
-    return queryParams;
-  }
+  
+  if (!queryString) return queryParams;
+
   if (queryString.startsWith('?')) {
-  queryString = queryString.slice(1);
-}
+    queryString = queryString.slice(1);
+  }
 
   const keyValuePairs = queryString.split("&");
 
   for (const pair of keyValuePairs) {
     if (!pair) continue;
-    var [key, ...value] = pair.split("=");
-    value = value.join("=");
+    
+    const [rawKey, ...rawValue] = pair.split("=");
+    const key = decodeURIComponent(rawKey);
+    const value = decodeURIComponent(rawValue.join("="));
+    
     queryParams[key] = value;
   }
 
