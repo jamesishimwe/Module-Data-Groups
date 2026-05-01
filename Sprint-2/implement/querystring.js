@@ -3,6 +3,10 @@ function parseQueryString(queryString) {
   if (queryString.length === 0) {
     return queryParams;
   }
+  if (queryString.startsWith('?')) {
+  queryString = queryString.slice(1);
+}
+
   const keyValuePairs = queryString.split("&");
 
   for (const pair of keyValuePairs) {
