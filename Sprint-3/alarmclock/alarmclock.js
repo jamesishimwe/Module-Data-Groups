@@ -1,15 +1,4 @@
-if (typeof expect !== 'undefined' && !expect.prototype.toHaveTextContent) {
-  expect.extend({
-    toHaveTextContent(received, expected) {
-      // Checks if the element's text matches what the test is looking for
-      const pass = received.textContent.includes(expected) || received.innerText.includes(expected);
-      return {
-        pass,
-        message: () => `expected "${received.textContent}" to contain "${expected}"`,
-      };
-    },
-  });
-}
+
 let countdown;
 function setAlarm() {
 clearInterval(countdown);
