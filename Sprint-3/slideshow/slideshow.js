@@ -29,3 +29,21 @@ function moveBackward() {
 
 forwardBtn.addEventListener("click", moveForward);
 backwardBtn.addEventListener("click", moveBackward);
+
+function startAuto(directionFn) {
+    // Disable buttons as required by tests
+    autoForwardBtn.disabled = true;
+    autoBackBtn.disabled = true;
+
+    intervalId = setInterval(directionFn, 2000);
+}
+
+autoForwardBtn.addEventListener("click", () => startAuto(moveForward));
+autoBackBtn.addEventListener("click", () => startAuto(moveBackward));
+
+stopBtn.addEventListener("click", () => {
+    clearInterval(intervalId);
+    // Re-enable buttons
+    autoForwardBtn.disabled = false;
+    autoBackBtn.disabled = false;
+});
