@@ -1,1 +1,16 @@
 /** Write your CSS in here **/
+body {
+  background-color: #ffa500; /* That bright orange */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#quote-container { /* If you wrap your p tags in a div */
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 600px;
+}
