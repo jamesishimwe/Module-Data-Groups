@@ -10,3 +10,9 @@ test("parses querystring values containing =", () => {
     "equation": "x=y+1",
   });
 });
+test("parses simple key-value pairs", () => {
+  expect(parseQueryString("name=alice&age=25")).toEqual({
+    "name": "alice",
+    "age": "25",
+  });
+});
