@@ -35,6 +35,7 @@ function updateDisplay(secondsLeft) {
 
     if (totalSeconds === 0) {
       playAlarm();
+      updateDisplay(totalSeconds);
       clearInterval(countdown);
     }
   }, 1000);
