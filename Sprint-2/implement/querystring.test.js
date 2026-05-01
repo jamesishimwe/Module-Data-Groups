@@ -22,3 +22,11 @@ test("strips leading question marks", () => {
     "status": "active",
   });
 });
+test("returns empty object for empty string", () => {
+  expect(parseQueryString("")).toEqual({});
+});
+
+test("returns empty object for null or undefined", () => {
+  expect(parseQueryString(null)).toEqual({});
+  expect(parseQueryString(undefined)).toEqual({});
+});
