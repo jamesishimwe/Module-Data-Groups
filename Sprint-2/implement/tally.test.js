@@ -39,3 +39,12 @@ test("Empty array of items",()=>{
 test("Invalid input",()=>{
     expect(() => tally("not an array")).toThrow(TypeError);
 }); 
+test("Test duplicate array",()=>{
+const duplicatesArray = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+const result = tally(duplicatesArray);
+    expect(result).toEqual({
+      apple: 3,
+      banana: 2,
+      orange: 1,
+    });
+});
