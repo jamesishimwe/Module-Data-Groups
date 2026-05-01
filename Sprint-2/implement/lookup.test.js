@@ -34,27 +34,36 @@ It should return:
  }
 */
 
-
 test("returns empty object for empty array", () => {
   expect(createLookup([])).toEqual({});
 });
 
 test("creates lookup from country-currency pairs", () => {
-  expect(createLookup([['US', 'USD'], ['CA', 'CAD']])).toEqual({
-    US: 'USD',
-    CA: 'CAD',
+  expect(
+    createLookup([
+      ["US", "USD"],
+      ["CA", "CAD"],
+    ])
+  ).toEqual({
+    US: "USD",
+    CA: "CAD",
   });
 });
 
 test("handles single pair", () => {
-  expect(createLookup([['JP', 'JPY']])).toEqual({
-    JP: 'JPY',
+  expect(createLookup([["JP", "JPY"]])).toEqual({
+    JP: "JPY",
   });
 });
 
 test("overwrites duplicate country codes (last one wins)", () => {
-  expect(createLookup([['US', 'USD'], ['US', 'USN']])).toEqual({
-    US: 'USN',
+  expect(
+    createLookup([
+      ["US", "USD"],
+      ["US", "USN"],
+    ])
+  ).toEqual({
+    US: "USN",
   });
 });
 
