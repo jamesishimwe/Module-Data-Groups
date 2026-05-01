@@ -16,3 +16,9 @@ test("parses simple key-value pairs", () => {
     "age": "25",
   });
 });
+test("strips leading question marks", () => {
+  expect(parseQueryString("?user=bob&status=active")).toEqual({
+    "user": "bob",
+    "status": "active",
+  });
+});
