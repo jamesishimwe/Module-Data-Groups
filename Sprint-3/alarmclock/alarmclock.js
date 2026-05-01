@@ -2,6 +2,7 @@ function setAlarm() {
 const inputField = document.getElementById("alarmSet");
 const timeRemainingHeading = document.getElementById("timeRemaining");
 let totalSeconds = parseInt(inputField.value);
+if (isNaN(totalSeconds)) return;
 function updateDisplay(secondsLeft) {
     const minutes = Math.floor(secondsLeft / 60);
     const seconds = secondsLeft % 60;
