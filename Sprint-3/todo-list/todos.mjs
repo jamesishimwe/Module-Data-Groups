@@ -32,3 +32,6 @@ export function deleteCompleted(todos) {
   todos.length = 0; 
   todos.push(...remaining);
 }
+export function addTask(todos, task, deadline = "", completed = false) {
+  todos.push({ task, deadline, completed });
+}
