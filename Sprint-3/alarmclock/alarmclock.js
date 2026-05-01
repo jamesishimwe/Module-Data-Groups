@@ -1,4 +1,6 @@
+let countdown;
 function setAlarm() {
+clearInterval(countdown);
 const inputField = document.getElementById("alarmSet");
 const timeRemainingHeading = document.getElementById("timeRemaining");
 let totalSeconds = parseInt(inputField.value);
@@ -12,7 +14,7 @@ function updateDisplay(secondsLeft) {
     timeRemainingHeading.innerText = `Time Remaining: ${formattedMinutes}:${formattedSeconds}`;
     updateDisplay(totalSeconds);
   }
-  const countdown = setInterval(() => {
+   countdown = setInterval(() => {
     totalSeconds--;
     
     if (totalSeconds >= 0) {
