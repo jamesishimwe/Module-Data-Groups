@@ -56,3 +56,15 @@ test("ignores trailing ampersands", () => {
     "b": "2",
   });
 });
+test("handles keys with empty values", () => {
+  expect(parseQueryString("key=")).toEqual({
+    "key": "",
+  });
+});
+
+test("handles keys without an equals sign", () => {
+  expect(parseQueryString("flag")).toEqual({
+    "flag": "",
+  });
+});
+
