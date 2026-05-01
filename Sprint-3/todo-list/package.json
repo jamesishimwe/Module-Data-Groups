@@ -18,6 +18,7 @@
   "homepage": "https://github.com/CodeYourFuture/CYF-Coursework-Template#readme",
   "devDependencies": {
     "http-server": "^14.1.1",
-    "jest": "^30.0.4"
+    "jest": "^30.0.4",
+    "jsdom": "^29.1.1"
   }
 }

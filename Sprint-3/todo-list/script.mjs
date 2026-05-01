@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
   Todos.addTask(todos, "Wash the dishes", false); 
   Todos.addTask(todos, "Do the shopping", true);
 
-  render();
+  populateTodoList();
 });
 
 
@@ -23,7 +23,7 @@ function addNewTodo() {
   const task = taskInput.value.trim();
   if (task) {
     Todos.addTask(todos, task, false);
-    render();
+    populateTodoList();
   }
 
   taskInput.value = "";
@@ -36,7 +36,7 @@ function addNewTodo() {
 const todoListEl = document.getElementById("todo-list");
 
 // Render the whole todo list
-function render() {
+function populateTodoList() {
   todoListEl.innerHTML = "";
 
   todos.forEach((todo, index) => {
@@ -64,12 +64,12 @@ function createListItem(todo, index) {
 
   li.querySelector('.complete-btn').addEventListener("click", () => {
     Todos.toggleCompletedOnTask(todos, index);
-    render();
+    populateTodoList();
   });
     
   li.querySelector('.delete-btn').addEventListener("click", () => {
     Todos.deleteTask(todos, index);
-    render();
+    populateTodoList();
   });
 
   return li;
