@@ -1,4 +1,29 @@
-function setAlarm() {}
+function setAlarm() {
+const inputField = document.getElementById("alarmSet");
+const timeRemainingHeading = document.getElementById("timeRemaining");
+let totalSeconds = parseInt(inputField.value);
+function updateDisplay(secondsLeft) {
+    const minutes = Math.floor(secondsLeft / 60);
+    const seconds = secondsLeft % 60;
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    const formattedSeconds = String(seconds).padStart(2, "0");
+    
+    timeRemainingHeading.innerText = `Time Remaining: ${formattedMinutes}:${formattedSeconds}`;
+    updateDisplay(totalSeconds);
+  }
+  const countdown = setInterval(() => {
+    totalSeconds--;
+    
+    if (totalSeconds >= 0) {
+      updateDisplay(totalSeconds);
+    }
+
+    if (totalSeconds === 0) {
+      playAlarm();
+      clearInterval(countdown);
+    }
+  }, 1000);
+}
 
 // DO NOT EDIT BELOW HERE
 
