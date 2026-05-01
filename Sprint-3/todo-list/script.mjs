@@ -13,8 +13,8 @@ window.addEventListener("load", () => {
   });
 
   // Populate sample data
-  Todos.addTask(todos, "Wash the dishes", false); 
-  Todos.addTask(todos, "Do the shopping", true);
+  Todos.addTask(todos, "Wash the dishes","2026-05-01", false); 
+  Todos.addTask(todos, "Do the shopping","2026-05-02", true);
 
   populateTodoList();
 });
@@ -24,9 +24,11 @@ window.addEventListener("load", () => {
 // append a new task to the todo list.
 function addNewTodo() {
   const taskInput = document.getElementById("new-task-input");
+  const deadlineInput = document.getElementById("task-deadline");
   const task = taskInput.value.trim();
+  const deadline = deadlineInput.value;
   if (task) {
-    Todos.addTask(todos, task, false);
+    Todos.addTask(todos, task, deadline, false);
     populateTodoList();
   }
 
@@ -36,31 +38,30 @@ function addNewTodo() {
 function createListItem(todo, index) {
   const li = todoListItemTemplate.cloneNode(true);
 
-  // Requirement: Display deadline next to the todo text
+  // FIX: This line ensures the date string is actually added to the UI
   const deadlineDisplay = todo.deadline ? ` (Due: ${todo.deadline})` : "";
   li.querySelector(".description").textContent = todo.task + deadlineDisplay;
 
-  // Requirement: If completed, add strikethrough class and change icon to ✅
   if (todo.completed) {
     li.classList.add("completed");
-    const icon = li.querySelector(".complete-btn span");
-    icon.className = "fa-solid fa-square-check"; // Ticked checkbox
+    // Requirement: Checkbox becomes ticked ✅
+    li.querySelector(".complete-btn span").className = "fa-solid fa-square-check";
   }
 
-  // Requirement: When checkbox icon is clicked, toggle completion
+  // Action listeners...
   li.querySelector('.complete-btn').addEventListener("click", () => {
     Todos.toggleCompletedOnTask(todos, index);
-    populateTodoList(); // Refresh the list to show strikethrough/tick
+    populateTodoList();
   });
     
-  // Requirement: When trash icon is clicked, delete the item
   li.querySelector('.delete-btn').addEventListener("click", () => {
     Todos.deleteTask(todos, index);
-    populateTodoList(); // Refresh the list to remove the item
+    populateTodoList();
   });
 
   return li;
 }
+
 
 // Note:
 // - Store the reference to the <ul> element with id "todo-list" here
@@ -87,23 +88,3 @@ const todoListItemTemplate =
   document.getElementById("todo-item-template").content.firstElementChild;
 
 // Create a <li> element for the given todo task
-function createListItem(todo, index) {
-  const li = todoListItemTemplate.cloneNode(true); // true => Do a deep copy of the node
-
-  li.querySelector(".description").textContent = todo.task;
-  if (todo.completed) {
-    li.classList.add("completed");
-  }
-
-  li.querySelector('.complete-btn').addEventListener("click", () => {
-    Todos.toggleCompletedOnTask(todos, index);
-    populateTodoList();
-  });
-    
-  li.querySelector('.delete-btn').addEventListener("click", () => {
-    Todos.deleteTask(todos, index);
-    populateTodoList();
-  });
-
-  return li;
-}

@@ -10,8 +10,8 @@
 */
 
 // Append a new task to todos[]
-export function addTask(todos, task, completed = false) {
-  todos.push({ task, completed });
+export function addTask(todos, task, deadline = "", completed = false) {
+  todos.push({ task, deadline, completed });
 }
 
 // Delete todos[taskIndex] if it exists
@@ -31,7 +31,4 @@ export function deleteCompleted(todos) {
   const remaining = todos.filter(t => !t.completed);
   todos.length = 0; 
   todos.push(...remaining);
-}
-export function addTask(todos, task, deadline = "", completed = false) {
-  todos.push({ task, deadline, completed });
 }
