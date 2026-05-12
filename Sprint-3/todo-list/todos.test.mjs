@@ -130,3 +130,12 @@ describe("toggleCompletedOnTask()", () => {
   });
 });
 
+test("Verify that deleteCompletedTasks() removes all completed tasks", () => {
+  const todos = createMockTodos();
+  const todosBeforeDeletion = [...todos];
+  Todos.deleteCompleted(todos);
+
+  // Only the tasks with completed: false should remain
+  const expectedTodos = todosBeforeDeletion.filter(todo => !todo.completed);
+  expect(todos).toEqual(expectedTodos);
+});
